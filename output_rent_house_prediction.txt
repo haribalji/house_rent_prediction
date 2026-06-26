@@ -1,0 +1,940 @@
+python -u "d:\aiml\house_rent_price_prediction\main.py"
+         house_type   house_size        location  ...                                        description  SecurityDeposit          Status
+0  2 BHK Apartment   1,180 sq ft            Ulwe  ...  It has area of 1180 sqft and is available at a...       No Deposit       Furnished
+1  2 BHK Apartment   1,120 sq ft            Ulwe  ...  Well designed 2 bhk multistorey apartment is a...       No Deposit     Unfurnished
+2  2 BHK Apartment   1,200 sq ft          Panvel  ...  A spacious 2 bhk multistorey apartment is avai...       No Deposit     Unfurnished
+3  2 BHK Apartment     750 sq ft  Kandivali West  ...  It has a built-up area of 750 sqft and is avai...       No Deposit     Unfurnished
+4  3 BHK Apartment   1,400 sq ft         Chembur  ...  The house is semi-furnished. It has power back...       No Deposit  Semi-Furnished
+
+[5 rows x 16 columns]
+providing the  summary of the dataset
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5000 entries, 0 to 4999
+Data columns (total 16 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   house_type        5000 non-null   object 
+ 1   house_size        5000 non-null   object 
+ 2   location          5000 non-null   object 
+ 3   city              5000 non-null   object 
+ 4   latitude          5000 non-null   float64
+ 5   longitude         5000 non-null   float64
+ 6   price             5000 non-null   int64  
+ 7   currency          5000 non-null   object 
+ 8   numBathrooms      4986 non-null   float64
+ 9   numBalconies      733 non-null    float64
+ 10  isNegotiable      571 non-null    object 
+ 11  priceSqFt         0 non-null      float64
+ 12  verificationDate  5000 non-null   object 
+ 13  description       4922 non-null   object 
+ 14  SecurityDeposit   5000 non-null   object 
+ 15  Status            5000 non-null   object 
+dtypes: float64(5), int64(1), object(10)
+memory usage: 625.1+ KB
+None
+providing the  statistical data  of the dataset
+          latitude    longitude         price  numBathrooms  numBalconies  priceSqFt
+count  5000.000000  5000.000000  5.000000e+03   4986.000000    733.000000        0.0
+mean     19.159138    72.953226  6.239421e+04      2.033895      2.064120        NaN
+std       0.435495     0.564369  8.874473e+04      0.800861      1.095187        NaN
+min      17.468220    72.719688  2.800000e+03      1.000000      1.000000        NaN
+25%      19.070265    72.839161  2.100000e+04      2.000000      1.000000        NaN
+50%      19.128770    72.884460  4.000000e+04      2.000000      2.000000        NaN
+75%      19.195199    72.995323  7.000000e+04      2.000000      3.000000        NaN
+max      30.888254    91.792137  1.200000e+06      7.000000      6.000000        NaN
+providing the  shape of the dataset (rows, columns)
+(5000, 16)
+providing the  no of null values in the dataset
+house_type             0
+house_size             0
+location               0
+city                   0
+latitude               0
+longitude              0
+price                  0
+currency               0
+numBathrooms          14
+numBalconies        4267
+isNegotiable        4429
+priceSqFt           5000
+verificationDate       0
+description           78
+SecurityDeposit        0
+Status                 0
+dtype: int64
+0       1,180 sq ft
+1       1,120 sq ft
+2       1,200 sq ft
+3         750 sq ft
+4       1,400 sq ft
+           ...     
+4995      800 sq ft
+4996    1,200 sq ft
+4997    1,040 sq ft
+4998    1,930 sq ft
+4999    1,260 sq ft
+Name: house_size, Length: 5000, dtype: object
+0       1180
+1       1120
+2       1200
+3        750
+4       1400
+        ... 
+4995     800
+4996    1200
+4997    1040
+4998    1930
+4999    1260
+Name: house_size, Length: 5000, dtype: int32
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5000 entries, 0 to 4999
+Data columns (total 16 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   house_type        5000 non-null   object 
+ 1   house_size        5000 non-null   int32  
+ 2   location          5000 non-null   object 
+ 3   city              5000 non-null   object 
+ 4   latitude          5000 non-null   float64
+ 5   longitude         5000 non-null   float64
+ 6   price             5000 non-null   int64  
+ 7   currency          5000 non-null   object 
+ 8   numBathrooms      5000 non-null   float64
+ 9   numBalconies      733 non-null    float64
+ 10  isNegotiable      571 non-null    object 
+ 11  priceSqFt         0 non-null      float64
+ 12  verificationDate  5000 non-null   object 
+ 13  description       4922 non-null   object 
+ 14  SecurityDeposit   5000 non-null   object 
+ 15  Status            5000 non-null   object 
+dtypes: float64(5), int32(1), int64(1), object(9)
+memory usage: 605.6+ KB
+None
+5.85960983050846
+         house_type  house_size        location    city   latitude  longitude  price  numBathrooms SecurityDeposit          Status
+0  2 BHK Apartment         1180            Ulwe  Mumbai  18.971046  73.017723  19000           2.0      No Deposit       Furnished
+1  2 BHK Apartment         1120            Ulwe  Mumbai  18.966377  73.012802  12500           2.0      No Deposit     Unfurnished
+2  2 BHK Apartment         1200          Panvel  Mumbai  18.965979  73.124649  22000           2.0      No Deposit     Unfurnished
+3  2 BHK Apartment          750  Kandivali West  Mumbai  19.213598  72.833633  28500           2.0      No Deposit     Unfurnished
+4  3 BHK Apartment         1400         Chembur  Mumbai  19.062933  72.892395  50000           3.0      No Deposit  Semi-Furnished
+house_type         0
+house_size         0
+location           0
+city               0
+latitude           0
+longitude          0
+price              0
+numBathrooms       0
+SecurityDeposit    0
+Status             0
+dtype: int64
+   house_size   latitude  longitude  price  ...  SecurityDeposit_ 95,000  SecurityDeposit_No Deposit  Status_Semi-Furnished  Status_Unfurnished
+0        1180  18.971046  73.017723  19000  ...                    False                        True                  False               False
+1        1120  18.966377  73.012802  12500  ...                    False                        True                  False                True
+2        1200  18.965979  73.124649  22000  ...                    False                        True                  False                True
+3         750  19.213598  72.833633  28500  ...                    False                        True                  False                True
+4        1400  19.062933  72.892395  50000  ...                    False                        True                   True               False
+
+[5 rows x 291 columns]
+      house_size   latitude  longitude  price  numBathrooms  \
+0           1180  18.971046  73.017723  19000           2.0   
+1           1120  18.966377  73.012802  12500           2.0   
+2           1200  18.965979  73.124649  22000           2.0   
+3            750  19.213598  72.833633  28500           2.0   
+4           1400  19.062933  72.892395  50000           3.0   
+...          ...        ...        ...    ...           ...   
+4995         800  19.257641  72.848587  46000           2.0   
+4996        1200  19.187275  72.831146  55000           2.0   
+4997        1040  19.170622  72.844917  44000           2.0   
+4998        1930  19.028339  73.057526  65000           3.0   
+4999        1260  19.043421  73.078125  31500           2.0   
+
+      house_type_1 BHK Independent Floor   \
+0                                   False   
+1                                   False   
+2                                   False   
+3                                   False   
+4                                   False   
+...                                   ...   
+4995                                False   
+4996                                False   
+4997                                False   
+4998                                False   
+4999                                False   
+
+      house_type_1 BHK Independent House   house_type_1 BHK Villa   \
+0                                   False                    False   
+1                                   False                    False   
+2                                   False                    False   
+3                                   False                    False   
+4                                   False                    False   
+...                                   ...                      ...   
+4995                                False                    False   
+4996                                False                    False   
+4997                                False                    False   
+4998                                False                    False   
+4999                                False                    False   
+
+      house_type_1 RK Studio Apartment   house_type_2 BHK Apartment   \
+0                                 False                         True   
+1                                 False                         True   
+2                                 False                         True   
+3                                 False                         True   
+4                                 False                        False   
+...                                 ...                          ...   
+4995                              False                         True   
+4996                              False                         True   
+4997                              False                         True   
+4998                              False                        False   
+4999                              False                         True   
+
+      house_type_2 BHK Independent Floor   \
+0                                   False   
+1                                   False   
+2                                   False   
+3                                   False   
+4                                   False   
+...                                   ...   
+4995                                False   
+4996                                False   
+4997                                False   
+4998                                False   
+4999                                False   
+
+      house_type_2 BHK Independent House   house_type_3 BHK Apartment   \
+0                                   False                        False   
+1                                   False                        False   
+2                                   False                        False   
+3                                   False                        False   
+4                                   False                         True   
+...                                   ...                          ...   
+4995                                False                        False   
+4996                                False                        False   
+4997                                False                        False   
+4998                                False                         True   
+4999                                False                        False   
+
+      house_type_3 BHK Independent Floor   \
+0                                   False   
+1                                   False   
+2                                   False   
+3                                   False   
+4                                   False   
+...                                   ...   
+4995                                False   
+4996                                False   
+4997                                False   
+4998                                False   
+4999                                False   
+
+      house_type_3 BHK Independent House   house_type_3 BHK Villa   \
+0                                   False                    False   
+1                                   False                    False   
+2                                   False                    False   
+3                                   False                    False   
+4                                   False                    False   
+...                                   ...                      ...   
+4995                                False                    False   
+4996                                False                    False   
+4997                                False                    False   
+4998                                False                    False   
+4999                                False                    False   
+
+      house_type_4 BHK Apartment   house_type_4 BHK Independent Floor   \
+0                           False                                False   
+1                           False                                False   
+2                           False                                False   
+3                           False                                False   
+4                           False                                False   
+...                           ...                                  ...   
+4995                        False                                False   
+4996                        False                                False   
+4997                        False                                False   
+4998                        False                                False   
+4999                        False                                False   
+
+      house_type_4 BHK Independent House   house_type_4 BHK Villa   \
+0                                   False                    False   
+1                                   False                    False   
+2                                   False                    False   
+3                                   False                    False   
+4                                   False                    False   
+...                                   ...                      ...   
+4995                                False                    False   
+4996                                False                    False   
+4997                                False                    False   
+4998                                False                    False   
+4999                                False                    False   
+
+      house_type_5 BHK Apartment   house_type_5 BHK Villa   \
+0                           False                    False   
+1                           False                    False   
+2                           False                    False   
+3                           False                    False   
+4                           False                    False   
+...                           ...                      ...   
+4995                        False                    False   
+4996                        False                    False   
+4997                        False                    False   
+4998                        False                    False   
+4999                        False                    False   
+
+      house_type_6 BHK Apartment   house_type_6 BHK Villa   \
+0                           False                    False   
+1                           False                    False   
+2                           False                    False   
+3                           False                    False   
+4                           False                    False   
+...                           ...                      ...   
+4995                        False                    False   
+4996                        False                    False   
+4997                        False                    False   
+4998                        False                    False   
+4999                        False                    False   
+
+      house_type_6 BHK penthouse   location_Agripada  location_Airoli  \
+0                           False              False            False   
+1                           False              False            False   
+2                           False              False            False   
+3                           False              False            False   
+4                           False              False            False   
+...                           ...                ...              ...   
+4995                        False              False            False   
+4996                        False              False            False   
+4997                        False              False            False   
+4998                        False              False            False   
+4999                        False              False            False   
+
+      location_Akurli Road  location_Akurli Road Number 1  \
+0                    False                          False   
+1                    False                          False   
+2                    False                          False   
+3                    False                          False   
+4                    False                          False   
+...                    ...                            ...   
+4995                 False                          False   
+4996                 False                          False   
+4997                 False                          False   
+4998                 False                          False   
+4999                 False                          False   
+
+      location_Ambernath East  location_Ambernath West  location_Amrut Nagar  \
+0                       False                    False                 False   
+1                       False                    False                 False   
+2                       False                    False                 False   
+3                       False                    False                 False   
+4                       False                    False                 False   
+...                       ...                      ...                   ...   
+4995                    False                    False                 False   
+4996                    False                    False                 False   
+4997                    False                    False                 False   
+4998                    False                    False                 False   
+4999                    False                    False                 False   
+
+      location_Andheri East  location_Andheri West  location_Antarli  \
+0                     False                  False             False   
+X_train Shape: (4000, 290)
+X_test Shape: (1000, 290)
+Y_train Shape: (4000,)
+Y_test Shape: (1000,)
+X_train:       house_size   latitude  longitude  numBathrooms  \
+4227         910  19.280876  72.874596           2.0   
+4676         600  19.185040  72.819511           2.0   
+800         1560  19.125847  72.853844           3.0   
+3671        1200  19.226862  72.864380           2.0   
+4193         535  19.153954  72.884712           1.0   
+...          ...        ...        ...           ...   
+4426         550  19.119032  72.894752           1.0   
+466          630  19.276237  72.959053           1.0   
+3092         622  19.129616  72.932274           2.0   
+3772         590  19.468100  72.797806           2.0   
+860          580  19.115671  72.882957           1.0   
+
+      house_type_1 BHK Independent Floor   \
+4227                                False   
+4676                                False   
+800                                 False   
+3671                                False   
+4193                                False   
+...                                   ...   
+4426                                False   
+466                                 False   
+3092                                False   
+3772                                False   
+860                                 False   
+
+      house_type_1 BHK Independent House   house_type_1 BHK Villa   \
+4227                                False                    False   
+4676                                False                    False   
+800                                 False                    False   
+3671                                False                    False   
+4193                                False                    False   
+...                                   ...                      ...   
+4426                                False                    False   
+466                                 False                    False   
+3092                                False                    False   
+3772                                False                    False   
+860                                 False                    False   
+
+      house_type_1 RK Studio Apartment   house_type_2 BHK Apartment   \
+4227                              False                         True   
+4676                              False                         True   
+800                               False                        False   
+3671                              False                         True   
+4193                              False                        False   
+...                                 ...                          ...   
+4426                              False                        False   
+466                               False                        False   
+3092                              False                        False   
+3772                              False                        False   
+860                               False                        False   
+
+      house_type_2 BHK Independent Floor   \
+4227                                False   
+4676                                False   
+800                                 False   
+3671                                False   
+4193                                False   
+...                                   ...   
+4426                                False   
+466                                 False   
+3092                                False   
+3772                                False   
+860                                 False   
+
+      house_type_2 BHK Independent House   house_type_3 BHK Apartment   \
+4227                                False                        False   
+4676                                False                        False   
+800                                 False                         True   
+3671                                False                        False   
+4193                                False                        False   
+...                                   ...                          ...   
+4426                                False                        False   
+466                                 False                        False   
+3092                                False                        False   
+3772                                False                        False   
+860                                 False                        False   
+
+      house_type_3 BHK Independent Floor   \
+4227                                False   
+4676                                False   
+800                                 False   
+3671                                False   
+4193                                False   
+...                                   ...   
+4426                                False   
+466                                 False   
+3092                                False   
+3772                                False   
+860                                 False   
+
+      house_type_3 BHK Independent House   house_type_3 BHK Villa   \
+4227                                False                    False   
+4676                                False                    False   
+800                                 False                    False   
+3671                                False                    False   
+4193                                False                    False   
+...                                   ...                      ...   
+4426                                False                    False   
+466                                 False                    False   
+3092                                False                    False   
+3772                                False                    False   
+860                                 False                    False   
+
+      house_type_4 BHK Apartment   house_type_4 BHK Independent Floor   \
+4227                        False                                False   
+4676                        False                                False   
+800                         False                                False   
+3671                        False                                False   
+4193                        False                                False   
+...                           ...                                  ...   
+4426                        False                                False   
+466                         False                                False   
+3092                        False                                False   
+3772                        False                                False   
+860                         False                                False   
+
+      house_type_4 BHK Independent House   house_type_4 BHK Villa   \
+4227                                False                    False   
+4676                                False                    False   
+800                                 False                    False   
+3671                                False                    False   
+4193                                False                    False   
+...                                   ...                      ...   
+4426                                False                    False   
+466                                 False                    False   
+3092                                False                    False   
+3772                                False                    False   
+860                                 False                    False   
+
+      house_type_5 BHK Apartment   house_type_5 BHK Villa   \
+4227                        False                    False   
+4676                        False                    False   
+800                         False                    False   
+3671                        False                    False   
+4193                        False                    False   
+...                           ...                      ...   
+4426                        False                    False   
+466                         False                    False   
+3092                        False                    False   
+3772                        False                    False   
+860                         False                    False   
+
+      house_type_6 BHK Apartment   house_type_6 BHK Villa   \
+4227                        False                    False   
+4676                        False                    False   
+800                         False                    False   
+3671                        False                    False   
+4193                        False                    False   
+...                           ...                      ...   
+4426                        False                    False   
+466                         False                    False   
+3092                        False                    False   
+3772                        False                    False   
+860                         False                    False   
+
+      house_type_6 BHK penthouse   location_Agripada  location_Airoli  \
+4227                        False              False            False   
+4676                        False              False            False   
+800                         False              False            False   
+3671                        False              False            False   
+4193                        False              False            False   
+...                           ...                ...              ...   
+4426                        False              False            False   
+466                         False              False            False   
+3092                        False              False            False   
+3772                        False              False            False   
+860                         False              False            False   
+
+      location_Akurli Road  location_Akurli Road Number 1  \
+4227                 False                          False   
+4676                 False                          False   
+800                  False                          False   
+3671                 False                          False   
+4193                 False                          False   
+...                    ...                            ...   
+4426                 False                          False   
+466                  False                          False   
+3092                 False                          False   
+3772                 False                          False   
+860                  False                          False   
+
+      location_Ambernath East  location_Ambernath West  location_Amrut Nagar  \
+4227                    False                    False                 False   
+4676                    False                    False                 False   
+800                     False                    False                 False   
+3671                    False                    False                 False   
+4193                    False                    False                 False   
+...                       ...                      ...                   ...   
+4426                    False                    False                 False   
+466                     False                    False                 False   
+3092                    False                    False                 False   
+3772                    False                    False                 False   
+860                     False                    False                 False   
+
+      location_Andheri East  location_Andheri West  location_Antarli  \
+4227                  False                  False             False   
+4676                  False                  False             False   
+The model's m value [ 7.23005453e+01 -5.14567914e+03 -3.35206497e+03  3.63674661e+03
+ -2.45547325e+03  1.18783593e+04  2.57531961e+03  7.90567412e+03
+ -9.72526862e+03 -1.76329105e+04 -2.25451595e+04 -1.10853621e+04
+ -7.27163161e+03 -3.92241546e+04 -1.46420827e+05  5.04380308e+04
+ -3.63614269e+03 -9.81614887e+04 -1.67314348e+05  4.47020007e+04
+  8.31365963e+04  1.73873509e+05 -5.75179031e+04  3.18643232e+05
+  2.26044562e+05 -3.01290783e+04 -1.52019547e+03 -2.09124482e-06
+ -3.88490946e+04 -1.54213880e+04 -4.43403029e+03  1.07240416e+04
+  2.46240095e+04 -1.83815557e+04  4.17311595e+03 -1.14657269e-07
+ -2.58161520e+04 -3.28100861e+04 -1.54072331e+04  2.77849575e+04
+  4.01887861e+04  8.56807208e+04 -3.05926970e+04  2.13158278e+03
+ -1.00267274e+04 -2.22838458e+04 -2.69940738e+04 -2.84771380e+04
+ -2.69529199e+04 -1.56946914e+04  1.41288580e+02 -3.42981119e+03
+  7.28997117e+04  6.04771023e+04 -2.46890977e+04  1.04597163e+05
+  2.65238649e+03  2.37468853e+05  7.28197194e+04  1.78034433e+05
+  5.45149024e+04  2.94318983e+04  2.74790329e+04  2.48475527e+04
+ -1.44645224e+04  6.27485361e+03 -1.08569847e+04  4.21564316e+03
+  4.94154948e+02  9.65032086e-07 -9.14793798e+03  9.85986720e+03
+ -1.77629527e+04 -1.37042378e+04 -2.77175352e+04 -2.20848514e+04
+ -1.27789485e+04 -1.05429819e+04 -1.74920904e+04 -1.50424795e+04
+  6.30824141e+03  4.48234321e+03 -2.01919105e+04  3.29346636e+04
+ -7.75983229e+03  4.59118347e+03  4.26636183e+03  1.50431160e+04
+ -1.97147926e+04 -2.14231863e+04  4.78111496e+05  1.96537266e+04
+  5.49860285e+03  1.67557760e+03  5.08262696e+04  6.65222850e+04
+  7.27651542e+04 -3.57376525e+04 -1.47566631e+04 -1.89300693e+04
+ -2.86214766e+04 -2.64414556e+04 -6.54204052e+03 -2.56056596e+03
+ -7.49734541e+03 -1.07192173e+04  3.19123501e-08 -2.59848995e+04
+ -1.51321263e+04  4.92813709e+03  5.86961113e+04  1.12274186e+05
+ -1.19654910e+04 -3.80931623e+04 -1.59180961e+04 -1.30341075e+04
+ -4.78830771e-07  3.80949794e+03  4.01849130e+04 -3.28626366e+03
+  4.09629287e+04  1.60342074e+05  1.81606133e+04  1.18883216e+05
+ -1.76595476e+04  3.81904102e+04  3.33970732e+04 -1.74944818e+02
+  1.17327191e+05  4.25483559e+03  7.44743373e+03  1.82611984e-07
+  2.26322702e+04  1.36769147e+04  4.03108253e+04 -2.48483939e+04
+  2.98069014e+03 -1.88107056e+04 -1.95134762e+04  1.80792158e+04
+ -1.31308930e+04 -2.00745777e+04  1.78503212e+05 -3.24605272e+04
+ -2.99830917e+04 -3.03159992e+04  9.23581603e+04 -4.71451392e+04
+  9.12420912e+04  2.10227953e+04  5.83958239e+04  1.12805143e+04
+  8.99771662e+03  5.14145828e+04 -2.08354701e+04 -2.73131888e+04
+ -3.56565579e-07  5.59369420e+03 -1.14900313e+04  1.27626456e+04
+  6.29291094e+04 -1.18074472e+04 -2.59984067e+03 -1.69269597e+04
+ -2.02575911e+04 -1.85952229e+04 -4.41923500e+04 -2.40642975e+04
+ -1.78438885e+04 -3.07734449e+04 -1.19884897e+04 -1.28578139e+04
+ -2.09779785e+04  3.78951642e+04  4.16192381e+04 -2.59244172e+04
+  4.93332619e+04  3.22042390e+04 -2.87796315e+04 -1.64276777e+04
+ -3.64986928e+02  6.27359908e+04 -2.59013690e+04 -1.52376105e+04
+  2.31103849e+04 -2.74552872e+04 -3.19578375e+04  5.79166226e-08
+ -2.71218060e+04 -1.82241448e+04 -2.37367061e+04 -7.82858714e+03
+  4.85704274e+04 -3.19383574e+04  6.21615054e+03  2.19700430e+04
+  2.02490199e+04 -2.94810569e+04 -3.27873699e+04 -2.96330622e+04
+  2.59263809e+04  1.21834805e+05  1.11714141e+05  1.23243647e+04
+  2.91038305e-10  1.49746689e+05 -5.45400591e+03  7.02129910e-09
+ -3.25045150e+04  6.00266503e-10  4.70711177e+04 -1.80600212e+03
+ -1.90649480e+03 -1.27217259e+03  1.38737527e+04 -1.43950519e+04
+  8.79170582e+03 -1.61953299e+04 -1.85160813e+04  3.20624793e+04
+  1.66397343e+03  2.45532766e+04 -9.16864341e+02 -3.51415855e+04
+ -5.53716654e+04  8.57847897e+03  1.05041365e+04  5.37893709e+04
+  5.28189991e+03  1.98292066e+05  2.42027935e+05  6.80304624e+03
+ -9.09494702e-09  1.33097133e+05 -8.05384658e+03  1.83504091e+05
+ -1.75750252e+03  3.33208602e+04  2.73459327e+04 -1.45387041e+04
+ -5.96311895e+03  1.55280104e+04 -5.58414288e+04  1.21834805e+05
+  7.57325658e+03  1.42730505e+05  1.67282546e+04 -2.19541611e+04
+  6.62955159e+03 -6.48145015e+03  7.85047564e+03 -2.65421415e+04
+  3.92216315e+03  6.06172111e+03  2.72848411e-12  8.16923475e+03
+  8.26923475e+03  6.66172111e+03  7.57467526e+03 -3.88018389e+04
+  9.00112794e+02 -1.51048593e+04  3.60642875e+03  2.28403680e+05
+  3.97229314e+03  5.89946450e+03  1.47172786e+04  3.14934589e+04
+  1.33536221e+05  3.18643232e+05  4.26145232e+03  2.31050743e+03
+  2.30024475e+04  7.10181147e+05  3.75840411e+03  5.74573784e+03
+ -3.72049620e+03 -5.27936408e+04 -3.63797881e-12 -5.19927073e+03
+ -3.39936089e+03  9.23581603e+04  4.07492142e+03 -2.35867034e+04
+  0.00000000e+00  4.49875913e+03  1.10357603e+04  1.58701148e+03
+  5.93079270e+03 -8.35991358e+01]
+The model's b value 322511.07585624733
+MEAN ABSOLUTE ERROR: 20886.00372450611
+R2 Score: 0.792817899826745
+Root Mean Squared Error: 48952.645758771476
+Mean of y_test: 67598.983
+1501    292291.673096
+2586     46916.844199
+2653      9984.319464
+1055     18618.920449
+705      57293.189291
+            ...      
+4711      6214.371222
+2313      5132.982219
+3214     54143.647774
+2732     27398.813194
+1926     39434.228525
+Name: price, Length: 1000, dtype: float64
+1503    668207.398774
+794     639609.453908
+96      630180.223452
+2018    295273.905699
+1501    292291.673096
+4838    268538.733313
+1041    204593.651916
+676     172319.565166
+4595    170282.367517
+812     168936.691500
+Name: price, dtype: float64
+Index([1503, 794, 96, 2018, 1501, 4838, 1041, 676, 4595, 812], dtype='int64')
+       Actual      Predicted          Error
+1503  1000000  331792.601226  668207.398774
+794   1100000  460390.546092  639609.453908
+96    1000000  369819.776548  630180.223452
+2018   575000  279726.094301  295273.905699
+1501   700000  407708.326904  292291.673096
+4838   220000  488538.733313  268538.733313
+1041    75000  279593.651916  204593.651916
+676    600000  772319.565166  172319.565166
+4595   375000  204717.632483  170282.367517
+812     60000  228936.691500  168936.691500
+house_size 72.30054527648787
+latitude -5145.67913777164
+longitude -3352.0649749862205
+numBathrooms 3636.7466119508317
+house_type_1 BHK Independent Floor  -2455.4732480901293
+house_type_1 BHK Independent House  11878.359328222083
+house_type_1 BHK Villa  2575.3196059530164
+house_type_1 RK Studio Apartment  7905.674115332571
+house_type_2 BHK Apartment  -9725.268619235736
+house_type_2 BHK Independent Floor  -17632.9104852248
+house_type_2 BHK Independent House  -22545.15954536893
+house_type_3 BHK Apartment  -11085.362052597484
+house_type_3 BHK Independent Floor  -7271.631613170481
+house_type_3 BHK Independent House  -39224.15463042573
+house_type_3 BHK Villa  -146420.8267856136
+house_type_4 BHK Apartment  50438.03084315108
+house_type_4 BHK Independent Floor  -3636.1426869487186
+house_type_4 BHK Independent House  -98161.48870670395
+house_type_4 BHK Villa  -167314.3481574022
+house_type_5 BHK Apartment  44702.000748967315
+house_type_5 BHK Villa  83136.5962775762
+house_type_6 BHK Apartment  173873.5094580109
+house_type_6 BHK Villa  -57517.9031399136
+house_type_6 BHK penthouse  318643.2322982279
+location_Agripada 226044.56211838394
+location_Airoli -30129.078293123664
+location_Akurli Road -1520.1954691374704
+location_Akurli Road Number 1 -2.091244823532179e-06
+location_Ambernath East -38849.09461107984
+location_Ambernath West -15421.387962915964
+location_Amrut Nagar -4434.030293788586
+location_Andheri East 10724.041608154585
+location_Andheri West 24624.009478508604
+location_Antarli -18381.55572240807
+location_Babhai 4173.1159475051245
+location_Babhai Naka -1.1465726856840774e-07
+location_Badlapur East -25816.151962594915
+location_Badlapur West -32810.086091930316
+location_Balkum -15407.233117820262
+location_Bandra East 27784.957520080647
+location_Bandra Kurla Complex 40188.786123943246
+location_Bandra West 85680.72079256507
+location_Belapur -30592.697011340104
+location_Bhandup East 2131.5827841096234
+location_Bhandup West -10026.727354624196
+location_Bhayandar East -22283.845767246814
+location_Bhayandar West -26994.07381599086
+location_Bhiwandi -28477.13797654469
+location_Boisar -26952.91989200933
+location_Borivali (West) -15694.691405299123
+location_Borivali East 141.288579719665
+location_Borivali West -3429.8111929181578
+location_Breach Candy 72899.71171712813
+location_Byculla 60477.10227310565
+location_CBD Belapur East -24689.097669550094
+location_Carter Road 104597.16272338522
+location_Chembur 2652.3864915009763
+location_Churchgate 237468.85254787587
+location_Colaba 72819.71939892352
+location_Cuffe Parade 178034.4325571888
+location_Cumballa Hill 54514.90244695924
+location_DN Nagar 29431.898285273837
+location_Dadar East 27479.032920176305
+location_Dadar West 24847.552669851742
+location_Dahisar -14464.522382554336
+location_Dahisar East 6274.853608724032
+location_Dahisar West -10856.984697553395
+location_Deonar 4215.643156247019
+location_Devidas Cross Lane 494.1549477523513
+location_Devidas Rd 9.650320862419903e-07
+location_Dharamveer Nagar -9147.93797679313
+location_Dharavi 9859.867196864156
+location_Diva -17762.952737455547
+location_Diva Gaon -13704.237756874878
+location_Dombivali -27717.535177768772
+location_Dombivali East -22084.851423046275
+location_Dombivli (West) -12778.948511891644
+location_Gamdevi -10542.981881927259
+location_Ghansoli -17492.090442156506
+location_Ghansoli Gaon -15042.479503383438
+location_Ghatkopar East 6308.2414118117995
+location_Ghatkopar West 4482.343206874444
+location_Ghodbunder Road -20191.910549069937
+location_Girgaon 32934.663568226286
+location_Goregaon East -7759.832288950114
+location_Goregaon West 4591.183465133465
+location_Govandi 4266.361829790718
+location_Gulmohar Road 15043.116009381829
+location_Hendre Pada -19714.792590085563
+location_Hiranandani Estates -21423.18628214344
+location_Jacob Circle 478111.49551119213
+location_Jayraj Nagar near Yogi Nagar 19653.726556672165
+location_Jogeshwari East 5498.602850971409
+location_Jogeshwari West 1675.5775997183446
+location_Juhu 50826.269591744516
+location_Juhu Scheme 66522.28502514378
+location_Juhu Tara Rd 72765.15416898104
+location_Kalamboli -35737.652533225744
+location_Kalwa -14756.663078163016
+location_Kalyan East -18930.069252167472
+location_Kalyan West -28621.476555988105
+location_Kamothe -26441.455604946026
+location_Kandivali East -6542.0405203110395
+location_Kandivali West -2560.565955882117
+location_Kanjurmarg -7497.345406630451
+location_Kanjurmarg East -10719.217336677764
+location_Kapurbawadi 3.1912350095808506e-08
+location_Karanjade -25984.89951956882
+location_Kasar vadavali -15132.126309576892
+location_Kastur Park 4928.137088973799
+location_Khar 58696.1113080543
+location_Khar West 112274.18575521933
+location_Khardi -11965.491021897906
+location_Kharghar -38093.16230105532
+location_Koparkhairane Station Road -15918.096070344562
+location_Koper Khairane -13034.107537809294
+location_Koproli -4.788307705894113e-07
+location_Kurla 3809.4979438351656
+location_Kurla East 40184.91295499204
+location_Kurla West -3286.2636605609205
+location_Lokhandwala 40962.92874362948
+location_Lower Parel 160342.0742258406
+location_MATUNGA WEST 18160.61325941563
+location_Mahalaxmi 118883.21568457574
+location_Mahape -17659.547600417565
+location_Mahim 38190.410199564016
+location_Mahim West 33397.073152783
+location_Majiwada thane -174.94481817238557
+location_Malabar Hill 117327.19135137003
+location_Malad East 4254.835588011192
+location_Malad West 7447.433728999102
+location_Marine Drive 1.8261198420077562e-07
+location_Marine Lines 22632.270232239167
+location_Marol andheri east 13676.91469608186
+location_Matunga 40310.82527129804
+location_Mira Road East -24848.393874842237
+location_Mulund East 2980.690143079006
+location_Mulund West -18810.705634378035
+location_Naigaon East -19513.476239794978
+location_Nala Sopara 18079.21584838353
+location_Nalasopara East -13130.892982202642
+location_Nalasopara West -20074.577733888727
+location_Napeansea Road 178503.21227646913
+location_Nerul -32460.527195481198
+location_Palava -29983.09171989626
+location_Palghar -30315.99915862212
+location_Pali Hill 92358.16029228695
+location_Panvel -47145.13919167633
+location_Parel 91242.09117231301
+location_Parel Village 21022.795345091083
+location_Peddar Road 58395.823924356635
+location_Piramal Nagar Housing Society Road 11280.514342258695
+location_Powai 8997.716616956757
+location_Prabhadevi 51414.5828473796
+location_Rabale -20835.47006638186
+location_Rasayani -27313.18876545559
+location_Saki Naka -3.5656557884067297e-07
+location_Sakinaka Andheri east 5593.694198978205
+location_Sanpada -11490.031343914425
+location_Santacruz East 12762.645551347465
+location_Santacruz West 62929.109364546195
+location_Santosh Nagar -11807.447164995494
+location_Saphale -2599.8406726346393
+location_Seawoods -16926.95966773611
+location_Sector 12 Kharghar -20257.591146751423
+location_Sector 21 Ghansoli -18595.22293608321
+location_Sector 21 Kamothe -44192.35000752217
+location_Sector 5 Ghansoli -24064.297518900064
+location_Sector-15 Ghansoli -17843.888488803717
+location_Sector-16 Koparkhairane -30773.44490532547
+location_Sector-19 Koper Khairane -11988.489658699622
+location_Sector5 Kopar Khairane -12857.813922549314
+location_Sector6 Kopar Khairane -20977.978512478196
+location_Seven Bunglow 37895.16417953168
+location_Sewri 41619.238069562045
+location_Shil Phata -25924.417167040177
+location_Sion 49333.26194551472
+location_St Andrew Rd 32204.238974994056
+location_Suyog Nagar -28779.63149296672
+location_Syndicate -16427.67769202913
+location_Taloja -364.9869278744227
+location_Tardeo 62735.99077360127
+location_Thakurli -25901.36898591387
+location_Thane West -15237.610492973356
+location_Tilak Nagar 23110.384910444256
+location_Titwala -27455.287191920695
+location_Ulwe -31957.837471119186
+location_Vakola 5.791662260890007e-08
+location_Vasai -27121.806013881513
+location_Vasai West -18224.14483627249
+location_Vasai east -23736.70612170583
+location_Vashi -7828.5871425890755
+location_Versova 48570.427396848565
+location_Vevoor -31938.357364041796
+location_Vikhroli 6216.150535589419
+location_Ville Parle East 21970.04299511595
+location_Ville Parle West 20249.019878339976
+location_Virar -29481.056932003943
+location_Virar East -32787.36986082734
+location_Virar West -29633.062185302995
+location_Wadala 25926.380878237913
+location_Walkeshwar 121834.80494980514
+location_Worli 111714.14117101247
+location_Yari Road 12324.36466309513
+location_colaba post office 2.9103830456733704e-10
+location_juhu tara 149746.689023335
+location_karanjade panvel -5454.005908161801
+location_matunga east 7.021299097687006e-09
+location_nallasopara W -32504.51495879873
+location_vakola santacuz e 6.002665031701326e-10
+location_vile parle west 47071.117690187675
+location_yogi nagar -1806.0021175655438
+city_Mumbai -1906.4948015161785
+SecurityDeposit_ 1,00,080 -1272.1725876575933
+SecurityDeposit_ 1,10,000 13873.752678253328
+SecurityDeposit_ 1,12,000 -14395.051937332399
+SecurityDeposit_ 1,20,000 8791.705816506192
+SecurityDeposit_ 1,25,000 -16195.329877139346
+SecurityDeposit_ 1,30,000 -18516.081346807485
+SecurityDeposit_ 1,35,000 32062.479268232935
+SecurityDeposit_ 1,40,000 1663.9734343810528
+SecurityDeposit_ 1,45,000 24553.276575583972
+SecurityDeposit_ 1,50,000 -916.8643406831943
+SecurityDeposit_ 1,60,000 -35141.58547164677
+SecurityDeposit_ 1,65,000 -55371.66536933873
+SecurityDeposit_ 1,75,000 8578.47896881733
+SecurityDeposit_ 1,80,000 10504.136534644516
+SecurityDeposit_ 10,00,000 53789.37085894243
+SecurityDeposit_ 10,000 5281.89991026919
+SecurityDeposit_ 11,00,000 198292.06607659446
+SecurityDeposit_ 12,00,000 242027.93456269146
+SecurityDeposit_ 12,000 6803.046243279878
+SecurityDeposit_ 13,000 -9.094947017729282e-09
+SecurityDeposit_ 15,00,000 133097.13306567512
+SecurityDeposit_ 15,000 -8053.8465810030775
+SecurityDeposit_ 18,00,000 183504.09128402726
+SecurityDeposit_ 2,00,000 -1757.5025217936782
+SecurityDeposit_ 2,20,000 33320.86018585269
+SecurityDeposit_ 2,25,000 27345.93273816961
+SecurityDeposit_ 2,40,000 -14538.70414915457
+SecurityDeposit_ 2,50,000 -5963.118949795102
+SecurityDeposit_ 2,500 15528.010386580758
+SecurityDeposit_ 2,75,000 -55841.42879319869
+SecurityDeposit_ 20,00,000 121834.80494976425
+SecurityDeposit_ 20,000 7573.256578535401
+SecurityDeposit_ 21,00,000 142730.5045607248
+SecurityDeposit_ 21,000 16728.25455371904
+SecurityDeposit_ 22,000 -21954.16113963814
+SecurityDeposit_ 25,000 6629.55158769212
+SecurityDeposit_ 3,00,000 -6481.450150782577
+SecurityDeposit_ 3,50,000 7850.475641093167
+SecurityDeposit_ 3,500 -26542.141512303155
+SecurityDeposit_ 30,000 3922.163153199521
+SecurityDeposit_ 30,200 6061.721113069758
+SecurityDeposit_ 30,400 2.7284841053187847e-12
+SecurityDeposit_ 30,500 8169.234745146035
+SecurityDeposit_ 30,600 8269.234745146241
+SecurityDeposit_ 30,800 6661.72111306967
+SecurityDeposit_ 35,000 7574.675261036657
+SecurityDeposit_ 36,00,000 -38801.83888603313
+SecurityDeposit_ 4,00,000 900.112794378103
+SecurityDeposit_ 4,50,000 -15104.85931795924
+SecurityDeposit_ 40,000 3606.428750351304
+SecurityDeposit_ 42,00,000 228403.68008862136
+SecurityDeposit_ 45,000 3972.2931393269027
+SecurityDeposit_ 48,000 5899.464504536116
+SecurityDeposit_ 5,00,000 14717.278566163503
+SecurityDeposit_ 5,40,000 31493.458871555667
+SecurityDeposit_ 5,50,000 133536.2208462901
+SecurityDeposit_ 50,00,000 318643.2322972697
+SecurityDeposit_ 50,000 4261.452323751291
+SecurityDeposit_ 55,000 2310.507433112614
+SecurityDeposit_ 6,00,000 23002.447465185873
+SecurityDeposit_ 60,00,000 710181.1471497838
+SecurityDeposit_ 60,000 3758.404112981527
+SecurityDeposit_ 65,000 5745.7378391806615
+SecurityDeposit_ 7,00,000 -3720.496199533256
+SecurityDeposit_ 7,000 -52793.64082318122
+SecurityDeposit_ 7,50,000 -3.637978807091713e-12
+SecurityDeposit_ 70,000 -5199.270732722303
+SecurityDeposit_ 75,000 -3399.3608947687135
+SecurityDeposit_ 8,00,000 92358.16029277476
+SecurityDeposit_ 80,000 4074.9214197445544
+SecurityDeposit_ 85,000 -23586.703385135326
+SecurityDeposit_ 9,00,000 0.0
+SecurityDeposit_ 90,000 4498.75912918666
+SecurityDeposit_ 95,000 11035.760257239956
+SecurityDeposit_No Deposit 1587.0114782838991
+Status_Semi-Furnished 5930.792702934275
+Status_Unfurnished -83.59913579465001
